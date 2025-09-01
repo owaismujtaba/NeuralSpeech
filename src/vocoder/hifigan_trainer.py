@@ -13,7 +13,7 @@ class HiFiGAN:
         print_herader("Initializing HiFiGAN")
         self.do_path = do_path
         self.g_path = g_path
-        self.config_path = config_path
+        self.config_file = config_path
         self.cfg = Config()
 
         self._set_configuration()

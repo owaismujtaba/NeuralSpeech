@@ -60,7 +60,7 @@ class AudioComponent:
         print(f"Audio loaded and resampled to 16kHz. New shape: {self.audio_22k.shape}")
 
     def _get_audio(self):
-        return self.audio_16k
+        return self.audio_22k
     
 
 class EEGComponent:

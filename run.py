@@ -30,9 +30,9 @@ loader = DataLoader(dataset, batch_size=16, shuffle=True, drop_last=True)
 
 from src.vocoder.hifigan_trainer import HiFiGAN
 hifigan = HiFiGAN(
-    config_path='src/vocoder/config_vocoder.json',
-    do_path='src/vocoder/checkpoints/g_01000000',
-    g_path='src/vocoder/checkpoints/do_01000000'
+    config_path='/home/owaismujtaba/work/NeuralSpeech/hifigan/pretrained/UNIVERSAL_V1/config.json',
+    do_path='/home/owaismujtaba/work/NeuralSpeech/hifigan/pretrained/UNIVERSAL_V1/do_02500000',
+    g_path='/home/owaismujtaba/work/NeuralSpeech/hifigan/pretrained/UNIVERSAL_V1/g_02500000'
 )
 
 hifigan.train_step(loader)
