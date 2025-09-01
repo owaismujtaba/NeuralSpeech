@@ -4,11 +4,13 @@ from hifigan.models import feature_loss, discriminator_loss, generator_loss
 from hifigan.env import AttrDict
 import torch
 from config import Config
+from src.components.utils import print_herader
 import pdb
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 class HiFiGAN:
     def __init__(self, config_path, do_path, g_path):
+        print_herader("Initializing HiFiGAN")
         self.do_path = do_path
         self.g_path = g_path
         self.config_path = config_path
@@ -19,7 +21,7 @@ class HiFiGAN:
 
 
     def _set_configuration(self):
-        print()
+        print("Setting up HiFiGAN configuration")
         with open(self.config_file) as f:
             config = AttrDict(json.load(f))
 
@@ -28,6 +30,7 @@ class HiFiGAN:
         self.msd = MultiScaleDiscriminator().to(DEVICE)
     
     def _initialize(self):
+        print("Loading pre-trained models and optimizers")
         state_dict_g = torch.load(self.g_path, map_location=DEVICE)
         state_dict_do = torch.load(self.do_path, map_location=DEVICE)
         
@@ -55,7 +58,7 @@ class HiFiGAN:
 
 
     def train_step(self, dataloader):
-
+        print_herader("Starting HiFiGAN training")
         for epoch in range(self.cfg.EPOCHS):
             total_g_loss = 0
             total_d_loss = 0
