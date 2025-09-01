@@ -28,6 +28,11 @@ dataset = AudioMelDataset(
 
 loader = DataLoader(dataset, batch_size=16, shuffle=True, drop_last=True)
 
-for audi, mel in loader:
-    print(audi.shape, mel.shape)
-    break
+from src.vocoder.hifigan_trainer import HiFiGAN
+hifigan = HiFiGAN(
+    config_path='src/vocoder/config_vocoder.json',
+    do_path='src/vocoder/checkpoints/g_01000000',
+    g_path='src/vocoder/checkpoints/do_01000000'
+)
+
+hifigan.train_step(loader)

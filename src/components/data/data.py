@@ -55,9 +55,9 @@ class AudioComponent:
     def load_audio(self):
         print(f"Loading and resampling audio from {self.file_path}")
         audio = np.load(self.file_path)
-        audio_16k = librosa.resample(audio, orig_sr=self.sr, target_sr=22050)
-        self.audio_16k = audio_16k
-        print(f"Audio loaded and resampled to 16kHz. New shape: {self.audio_16k.shape}")
+        audio_22k = librosa.resample(audio, orig_sr=self.sr, target_sr=22050)
+        self.audio_22k = audio_22k
+        print(f"Audio loaded and resampled to 16kHz. New shape: {self.audio_22k.shape}")
 
     def _get_audio(self):
         return self.audio_16k
